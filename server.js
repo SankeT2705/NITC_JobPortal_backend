@@ -18,6 +18,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "https://nitc-job-portal.vercel.app",
+  "https://nitc-job-portal-backend.vercel.app"
 ];
 
 // ✅ CORS Middleware

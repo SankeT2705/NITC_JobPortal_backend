@@ -21,6 +21,7 @@ const allowedOrigins = [
   "https://nitc-job-portal-backend.vercel.app"
 ];
 
+
 // ✅ CORS Middleware
 app.use(
   cors({

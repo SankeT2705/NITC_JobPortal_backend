@@ -8,6 +8,8 @@ import authRoutes from "./routes/authRoutes.js";
 import jobRoutes from "./routes/jobRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
+import superAdminRoutes from "./routes/superAdminRoutes.js";
+
 
 dotenv.config();
 connectDB();
@@ -56,6 +58,8 @@ app.use((err, req, res, next) => {
   console.error("❌ Server Error:", err.message);
   res.status(500).json({ message: "Internal Server Error" });
 });
+
+app.use("/api/superadmin", superAdminRoutes);
 
 // ✅ Export app for Vercel serverless functions
 export default app;

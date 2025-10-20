@@ -13,7 +13,7 @@ export const sendEmail = async (to, subject, html) => {
 
     // ✅ Email content
     const mailOptions = {
-      from: `"NITC Job Portal" <${process.env.SMTP_EMAIL}>`,
+      from: `"NITC Job Portal" <${process.env.SMTP_USER}>`,
       to,
       subject,
       html,

@@ -9,8 +9,7 @@ import jobRoutes from "./routes/jobRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 import superAdminRoutes from "./routes/superAdminRoutes.js";
-
-
+import userRoutes from "./routes/userRoutes.js";
 dotenv.config();
 connectDB();
 
@@ -47,7 +46,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/notifications", notificationRoutes);
-
+app.use("/api/users", userRoutes); // ✅ NEW
 // ✅ Default route
 app.get("/", (req, res) => {
   res.send("🚀 NITC Job Portal Backend Running on Vercel + MongoDB Atlas!");

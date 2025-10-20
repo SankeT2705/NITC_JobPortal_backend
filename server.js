@@ -9,6 +9,8 @@ import jobRoutes from "./routes/jobRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 import superAdminRoutes from "./routes/superAdminRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+
 
 
 dotenv.config();
@@ -47,6 +49,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api/users", userRoutes);
 
 // ✅ Default route
 app.get("/", (req, res) => {

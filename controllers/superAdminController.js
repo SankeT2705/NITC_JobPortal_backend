@@ -1,7 +1,6 @@
 import AdminRequest from "../models/AdminRequest.js";
 import User from "../models/User.js";
 import nodemailer from "nodemailer";
-import { sendMail } from "../config/email.js";
 
 // Nodemailer setup
 const transporter = nodemailer.createTransport({
@@ -47,12 +46,12 @@ export const handleRequest = async (req, res) => {
       await newAdmin.save();
 
       // Send email with password
-    await sendMail({
-  to: request.email,
-  subject: "Admin Access Granted - NITC Job Portal",
-  text: `Hello ${request.name},\n\nYour admin request has been approved.\nLogin using password: ${randomPass}\n\nBest,\nNITC Team`,
-});
-
+      await transporter.sendMail({
+        from: process.env.SMTP_USER,
+        to: request.email,
+        subject: "Admin Access Granted - NITC Job Portal",
+        text: `Hello ${request.name},\n\nYour admin request has been approved.\nLogin using the password: ${randomPass}\n\nBest,\nNITC Team`,
+      });
 
       request.status = "Accepted";
       await request.save();
@@ -60,12 +59,12 @@ export const handleRequest = async (req, res) => {
     }
 
     if (action === "reject") {
-    await sendMail({
-  to: request.email,
-  subject: "Admin Request Rejected - NITC Job Portal",
-  text: `Hello ${request.name},\n\nWe regret to inform you that your admin request has been rejected.\n\nRegards,\nNITC Team`,
-});
-
+      await transporter.sendMail({
+        from: process.env.SMTP_USER,
+        to: request.email,
+        subject: "Admin Request Rejected - NITC Job Portal",
+        text: `Hello ${request.name},\n\nWe regret to inform you that your admin request has been rejected.\n\nRegards,\nNITC Team`,
+      });
 
       request.status = "Rejected";
       await request.save();

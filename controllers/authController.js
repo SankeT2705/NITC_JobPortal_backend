@@ -2,7 +2,8 @@ import User from "../models/User.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import AdminRequest from "../models/AdminRequest.js";
-import { transporter } from "../config/email.js";
+import { sendMail } from "../config/email.js";
+
 
 export const requestAdminAccess = async (req, res) => {
   try {

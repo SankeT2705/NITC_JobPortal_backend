@@ -9,10 +9,10 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// ✅ Admin-specific stats
+//Admin-specific stats
 router.get("/admin/:email", getAdminApplications);
 
-// ✅ User-specific routes
+//User-specific routes
 router.post("/apply", protect, applyForJob);
 router.get("/user", protect, getUserApplications);
 router.put("/:id/status", protect, updateApplicationStatus);

@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// ✅ Fetch all admin requests
+// Fetch all admin requests
 export const getRequests = async (req, res) => {
   try {
     const requests = await AdminRequest.find().sort({ createdAt: -1 });
@@ -22,7 +22,7 @@ export const getRequests = async (req, res) => {
   }
 };
 
-// ✅ Handle accept/reject
+// Handle accept/reject
 export const handleRequest = async (req, res) => {
   try {
     const { id } = req.params;
@@ -78,7 +78,7 @@ export const handleRequest = async (req, res) => {
   }
 };
 
-// ✅ Delete admin
+// Delete admin
  
 
 export const deleteAdmin = async (req, res) => {

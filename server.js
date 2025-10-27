@@ -18,7 +18,7 @@ connectDB();
 
 const app = express();
 
-// ✅ Define allowed origins for both local & production
+//Define allowed origins for both local & production
 const allowedOrigins = [
   "http://localhost:3000",
   "https://nitc-job-portal.vercel.app",
@@ -26,7 +26,7 @@ const allowedOrigins = [
 ];
 
 
-// ✅ CORS Middleware
+//CORS Middleware
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -41,22 +41,22 @@ app.use(
   })
 );
 
-// ✅ JSON body parser
+//JSON body parser
 app.use(express.json({ limit: "10mb" }));
 
-// ✅ Routes
+//Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/users", userRoutes);
 
-// ✅ Default route
+//Default route
 app.get("/", (req, res) => {
   res.send("🚀 NITC Job Portal Backend Running on Vercel + MongoDB Atlas!");
 });
 
-// ✅ Error handling middleware
+//Error handling middleware
 app.use((err, req, res, next) => {
   console.error("❌ Server Error:", err.message);
   res.status(500).json({ message: "Internal Server Error" });
@@ -64,10 +64,10 @@ app.use((err, req, res, next) => {
 
 app.use("/api/superadmin", superAdminRoutes);
 
-// ✅ Export app for Vercel serverless functions
+//Export app for Vercel serverless functions
 export default app;
 
-// ✅ For local development only
+//For local development only
 if (process.env.NODE_ENV !== "production") {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () =>

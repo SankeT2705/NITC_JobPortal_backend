@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 export const sendEmail = async (to, subject, html) => {
   try {
-    // ✅ Setup transporter using Gmail SMTP
+    //Setup transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -11,7 +11,7 @@ export const sendEmail = async (to, subject, html) => {
       },
     });
 
-    // ✅ Email content
+    //Email content
     const mailOptions = {
       from: `"NITC Job Portal" <${process.env.SMTP_USER}>`,
       to,
@@ -19,7 +19,7 @@ export const sendEmail = async (to, subject, html) => {
       html,
     };
 
-    // ✅ Send email
+    //Send email
     await transporter.sendMail(mailOptions);
     console.log(`📧 Email sent successfully to: ${to}`);
   } catch (err) {

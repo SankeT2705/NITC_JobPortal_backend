@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 /**
- * ✅ Protect Middleware
+ * Protect Middleware
  * Verifies JWT token, attaches user details to `req.user`
  */
 export const protect = async (req, res, next) => {
@@ -25,7 +25,7 @@ export const protect = async (req, res, next) => {
         return res.status(401).json({ message: "User not found" });
       }
 
-      // ✅ Attach user info (email + role) for easy backend use
+      //  Attach user info (email + role) for easy backend use
       req.user = {
         _id: user._id,
         name: user.name,
@@ -47,7 +47,7 @@ export const protect = async (req, res, next) => {
 };
 
 /**
- * ✅ Admin-Only Middleware
+ *  Admin-Only Middleware
  * Restricts route access to admins only
  */
 export const adminOnly = (req, res, next) => {

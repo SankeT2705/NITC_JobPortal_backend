@@ -23,7 +23,7 @@ export const requestAdminAccess = async (req, res) => {
   }
 };
 
-// ✅ REGISTER USER / ADMIN
+// REGISTER USER / ADMIN
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password, department, role } = req.body;
@@ -65,7 +65,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-// ✅ LOGIN USER / ADMIN
+//LOGIN USER / ADMIN
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -76,14 +76,14 @@ export const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials: user not found" });
     }
 
-    // ✅ Compare password using model method
+    //Compare password using model method
     const isMatch = await user.matchPassword(password);
     if (!isMatch) {
       console.log("❌ Password mismatch for:", email);
       return res.status(401).json({ message: "Invalid password" });
     }
 
-    // ✅ Generate JWT token
+    //Generate JWT token
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
@@ -107,7 +107,7 @@ export const loginUser = async (req, res) => {
   }
 };
 
-// ✅ PROFILE
+//PROFILE
 export const getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select("-password");
@@ -117,7 +117,7 @@ export const getProfile = async (req, res) => {
   }
 };
 
-// ✅ FETCH ALL ADMIN REQUESTS (SuperAdmin Dashboard)
+//FETCH ALL ADMIN REQUESTS (SuperAdmin Dashboard)
 export const getAdminRequests = async (req, res) => {
   try {
     const requests = await AdminRequest.find().sort({ createdAt: -1 });
@@ -128,7 +128,7 @@ export const getAdminRequests = async (req, res) => {
   }
 };
 
-// ✅ HANDLE ACCEPT / REJECT ADMIN REQUEST
+//HANDLE ACCEPT / REJECT ADMIN REQUEST
  export const handleAdminRequest = async (req, res) => {
   try {
     const { id } = req.params;
@@ -165,7 +165,7 @@ export const getAdminRequests = async (req, res) => {
       request.status = "Accepted";
       await request.save();
 
-      // ✅ Send Email
+      //Send Email
       await transporter.sendMail({
         from: `"NITC Job Portal" <${process.env.EMAIL_USER}>`,
         to: request.email,

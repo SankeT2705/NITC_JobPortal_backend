@@ -7,7 +7,7 @@ const router = express.Router();
 
  
 
-// ✅ GET all unread notifications for logged-in user
+//GET all unread notifications for logged-in user
 router.get("/:email", protect, async (req, res) => {
   try {
     const { email } = req.params;
@@ -28,7 +28,7 @@ router.get("/:email", protect, async (req, res) => {
   }
 });
 
-// ✅ DELETE all notifications for user (on “Clear All”)
+//DELETE all notifications for user (on “Clear All”)
 router.delete("/:email", protect, async (req, res) => {
   try {
     const { email } = req.params;

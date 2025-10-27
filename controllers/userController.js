@@ -1,7 +1,7 @@
 // controllers/userController.js
 import User from "../models/User.js";
 
-/** ✅ GET current user's profile */
+/** GET current user's profile */
 export const getUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select("-password");
@@ -13,7 +13,7 @@ export const getUserProfile = async (req, res) => {
   }
 };
 
-/** ✅ UPDATE name/department */
+/** UPDATE name/department */
 export const updateUserProfile = async (req, res) => {
   try {
     const { name, department } = req.body;
@@ -40,7 +40,7 @@ export const updateUserProfile = async (req, res) => {
   }
 };
 
-/** ✅ ADD skill */
+/** ADD skill */
 export const addSkill = async (req, res) => {
   try {
     const { skill } = req.body;
@@ -61,7 +61,7 @@ export const addSkill = async (req, res) => {
   }
 };
 
-/** ✅ DELETE skill */
+/**DELETE skill */
 export const deleteSkill = async (req, res) => {
   try {
     const { skill } = req.params;

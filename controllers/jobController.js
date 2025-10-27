@@ -2,7 +2,7 @@ import Job from "../models/Job.js";
 import Application from "../models/Application.js";
 
 /**
- * ✅ Create Job (Admin only)
+ * Create Job (Admin only)
  */
 export const createJob = async (req, res) => {
   try {
@@ -43,7 +43,7 @@ export const createJob = async (req, res) => {
 };
 
 /**
- * ✅ Get All Jobs (Admin → Own Jobs | User → All Jobs)
+ *Get All Jobs (Admin → Own Jobs | User → All Jobs)
  */
 export const getJobs = async (req, res) => {
   try {
@@ -59,7 +59,7 @@ export const getJobs = async (req, res) => {
 };
 
 /**
- * ✅ Get Jobs by Admin Email (For Dashboard)
+ * Get Jobs by Admin Email (For Dashboard)
  */
 export const getAdminJobs = async (req, res) => {
   try {
@@ -75,7 +75,7 @@ export const getAdminJobs = async (req, res) => {
 };
 
 /**
- * ✅ Get Single Job by ID
+ * Get Single Job by ID
  */
 export const getJobById = async (req, res) => {
   try {
@@ -89,7 +89,7 @@ export const getJobById = async (req, res) => {
 };
 
 /**
- * ✅ Update Job
+ * Update Job
  */
 export const updateJob = async (req, res) => {
   try {
@@ -119,7 +119,7 @@ export const updateJob = async (req, res) => {
 };
 
 /**
- * ✅ Delete Job + Related Applications
+ * Delete Job + Related Applications
  */
 export const deleteJob = async (req, res) => {
   try {

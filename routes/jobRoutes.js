@@ -5,16 +5,16 @@ import {
   getJobById,
   updateJob,
   deleteJob,
-  getAdminJobs, // ✅ must import
+  getAdminJobs, //must import
 } from "../controllers/jobController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// ✅ Order matters — keep before :id
+//Order matters — keep before :id
 router.get("/admin/:email", getAdminJobs);
 
-// ✅ Standard job routes
+//Standard job routes
 router.post("/", protect, createJob);
 router.get("/", getJobs);
 router.get("/:id", protect, getJobById);
